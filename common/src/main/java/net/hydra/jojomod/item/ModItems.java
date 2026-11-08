@@ -22,8 +22,8 @@ public class ModItems {
 
     // 'refreshed' effect durations for foods.
     public static final int CHAMOMILE_DURATION = 150;
-    public static final int MINT_DURATION = 125;
-    public static final int TEA_DURATION = 1000;
+    public static final int MINT_DURATION = 150;
+    public static final int TEA_DURATION = 1100;
 
     public static Item STAND_ARROW;
     public static Item STAND_BEETLE_ARROW;
@@ -45,6 +45,8 @@ public class ModItems {
     public static Item STAND_DISC_KING_CRIMSON;
     public static Item MAX_STAND_DISC_KING_CRIMSON;
 
+    public static Item STAND_DISC_JJF;
+    public static Item MAX_STAND_DISC_JJF;
     public static Item STAND_DISC_RATT;
     public static Item MAX_STAND_DISC_RATT;
     public static Item STAND_DISC_ANUBIS;
@@ -131,6 +133,15 @@ public class ModItems {
     public static Item AESTHETICIAN_SPAWN_EGG;
     public static Item ZOMBIE_AESTHETICIAN_SPAWN_EGG;
     public static Item ANUBIS_GUARDIAN_SPAWN_EGG;
+    public static Item SNAKE_SPAWN_EGG;
+    public static Item PIRANHA_SPAWN_EGG;
+    public static Item BUTTERFLY_SPAWN_EGG;
+    public static Item SNAKE_SKIN;
+    public static Item SNAKE_OIL;
+    public static Item SNAKE_SKIN_BOOTS;
+    public static Item PIRANHA_BUCKET;
+    public static Item PIRANHA;
+    public static Item COOKED_PIRANHA;
     public static Item ROAD_ROLLER;
 
     public static Item IRON_BALL_CROSSBOW;
@@ -303,6 +314,7 @@ public class ModItems {
     public static Item ULTRAVIOLET_BLASTER;
     public static Item FLESH_BUCKET;
     public static Item CHERRIES;
+    public static Item ZOMBIE_HORSE_THREAD;
 
     public static CreativeModeTab FOG_BLOCK_ITEMS;
 
@@ -393,7 +405,7 @@ public class ModItems {
         addToVisageStore(VALENTINE_MASK,page, characterCostExp, characterCostEmerald);
         addToVisageStore(DOT_HAN_MASK,page, characterCostExp, characterCostEmerald);
         addToVisageStore(AVDUL_MASK,page, characterCostExp, characterCostEmerald);
-        addToVisageStore(BLACKMORE_MASK,page, characterCostExp, characterCostEmerald);
+        //addToVisageStore(BLACKMORE_MASK,page, characterCostExp, characterCostEmerald);
 
         page++;
         addToVisageStore(JOSUKE_PART_EIGHT_MASK,page, characterCostExp, characterCostEmerald);

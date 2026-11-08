@@ -47,7 +47,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import org.apache.commons.compress.utils.Lists;
+import com.google.common.collect.Lists;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.ArrayList;
@@ -103,7 +103,6 @@ public class PowersCatchTheRainbow extends NewDashPreset {
                         this.getSelf().getY() + randY,
                         this.getSelf().getZ() + randZ,
                         0,0,0.2,0,0);
-
             }
         }
     }
@@ -294,6 +293,19 @@ public class PowersCatchTheRainbow extends NewDashPreset {
         return super.isAttackIneptVisually(activeP, slot);
     }
 
+    @Override
+    public void onStandSwitch(){
+        this.clearArm();
+        super.onStandSwitch();
+    }
+
+    private void clearArm(){
+        if (!this.self.level().isClientSide){
+            if (!HasOffHand){
+                Off_hand_entity.removearm();
+            }
+        }
+    }
 
     private static final byte
     RAINMEND = 53,
@@ -405,7 +417,7 @@ public class PowersCatchTheRainbow extends NewDashPreset {
     //rain speed
     @Override
     public float inputSpeedModifiers(float basis) {
-        if (isInRain() && PowerTypes.hasStandActive(self)){
+        if (isInRain() && PowerTypes.hasStandActive(self) && !getStandUserSelf().roundabout$getIsRainWalking()){
             if (!(this.getSelf() instanceof Mob)) {
                 basis *= this.getSelf().isSprinting() ? 1.35F : 1F;
             }
@@ -436,6 +448,8 @@ public class PowersCatchTheRainbow extends NewDashPreset {
                     if (this.self instanceof StandUser su){
                         su.roundabout$setIsRainWalking(true);
                     }
+                }else{
+                    canCreatePlatform = false;
                 }
             } else if (canCreatePlatform && !self.onGround()) {
                 rainWalk();
@@ -596,9 +610,9 @@ public class PowersCatchTheRainbow extends NewDashPreset {
                 playSoundIfPossible(self.level(), null, this.self.blockPosition(), ModSounds.CTR_HEAL_EVENT, SoundSource.PLAYERS, 0.6F, (float)Roundabout.RANDOM.nextDouble(0.9, 1.1));
                 for (int i = 0; i < 11; i = i + 1) {
                     sendParticlesIfPossible(self.level(), ParticleTypes.SPLASH,
-                            this.getSelf().getX() + (diameter * Math.sin(i * 6)) * Math.cos(Xangle),
+                            this.getSelf().getX() + (diameter * Math.sin(i * 4)) * Math.cos(Xangle),
                             this.getSelf().getY() + (this.getSelf().getEyeHeight() * 0.7),
-                            this.getSelf().getZ() + (diameter * Math.cos(i * 6)) * Math.cos(Zangle),
+                            this.getSelf().getZ() + (diameter * Math.cos(i * 4)) * Math.cos(Zangle),
                             0, 0, 0, 0, 0);
                 }
             }
@@ -676,7 +690,7 @@ public class PowersCatchTheRainbow extends NewDashPreset {
                     0,
                     3,
                     0);
-            dropTimer = 20;
+            dropTimer = 60;
         }
     }
 
@@ -720,6 +734,18 @@ public class PowersCatchTheRainbow extends NewDashPreset {
                 if(!(Off_hand_entity == null)){
                     Off_hand_entity.discard();
                 }
+
+                for(int i = 0; i < 23; i = i + 1) {
+                    double randX = Roundabout.RANDOM.nextDouble(-1.5, 1.5);
+                    double randY = Roundabout.RANDOM.nextDouble(0, 1.5);
+                    double randZ = Roundabout.RANDOM.nextDouble(-1.5, 1.5);
+                    sendParticlesIfPossible(self.level(),ParticleTypes.SPLASH,
+                            this.getSelf().getX() + randX,
+                            this.getSelf().getY() + randY,
+                            this.getSelf().getZ() + randZ,
+                            0,0,0.2,0,0);
+                }
+
                 Off_hand_entity = SAE;
                 SAE.setUser(this.self);
                 SAE.setXRot(this.self.getXRot());
@@ -795,9 +821,9 @@ public class PowersCatchTheRainbow extends NewDashPreset {
             playSoundIfPossible(self.level(), null, this.self.blockPosition(), ModSounds.CTR_HEAL_EVENT, SoundSource.PLAYERS, 0.35F, (float)Roundabout.RANDOM.nextDouble(0.65, 0.85));
             for (int i = 0; i < 11; i = i + 1) {
                 sendParticlesIfPossible(self.level(), ParticleTypes.SPLASH,
-                        this.getSelf().getX() + (diameter * Math.sin(i * 6)) * Math.cos(Xangle),
+                        this.getSelf().getX() + (diameter * Math.sin(i * 4)) * Math.cos(Xangle),
                         this.getSelf().getY() + (this.getSelf().getEyeHeight() * 0.7),
-                        this.getSelf().getZ() + (diameter * Math.cos(i * 6)) * Math.cos(Zangle),
+                        this.getSelf().getZ() + (diameter * Math.cos(i * 4)) * Math.cos(Zangle),
                         0, 0, 0, 0, 0);
             }
         }
@@ -867,6 +893,9 @@ public class PowersCatchTheRainbow extends NewDashPreset {
                     int cdTime = ClientNetworking.getAppropriateConfig().generalStandSettings.dashCooldown / 6;
                     if (this.getSelf() instanceof Player) {
                         ((IPlayerEntity) this.getSelf()).roundabout$setClientDodgeTime(0);
+                    }
+                    if (this.self instanceof StandUser su){
+                        su.roundabout$setIsRainWalking(false);
                     }
                     this.setCooldown(PowerIndex.GLOBAL_DASH, cdTime);
                     MainUtil.takeUnresistableKnockbackWithY(this.getSelf(), 0.91F,

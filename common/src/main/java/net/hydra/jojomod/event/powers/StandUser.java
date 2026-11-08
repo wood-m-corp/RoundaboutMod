@@ -150,6 +150,15 @@ public interface StandUser {
     int roundabout$getCatchTheRainbowVanishTicks();
     void roundabout$setCatchTheRainbowVanishTicks(int set);
 
+    /// Worn stand vanishticks, this may fix the shit upwards, so we don't have to add a vanish set and get for every stand :)
+    int roundabout$getCurrentStandVanishTicks();
+    void roundabout$setCurrentStandVanishTicks(int set);
+    int roundabout$getPreviousStandVanishTicks();
+    void roundabout$setPreviousStandVanishTicks(int set);
+    StandPowers roundabout$getPreviousStandPowers();
+    void roundabout$setPreviousStandPowers(StandPowers SP);
+
+
     int getJumpImmunityTicks();
 
     boolean rdbt$hasLeftHandGone();
@@ -435,6 +444,7 @@ public interface StandUser {
     boolean roundabout$hasInfiniteSpin();
     void roundabout$clearInfiniteSpin();
 
+    /** catch the rainbow **/
     boolean roundabout$getIsRainWalking();
     void roundabout$setIsRainWalking(boolean bool);
 }

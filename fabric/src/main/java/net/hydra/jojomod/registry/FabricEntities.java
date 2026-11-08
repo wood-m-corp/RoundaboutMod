@@ -6,11 +6,8 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 import net.hydra.jojomod.Roundabout;
 import net.hydra.jojomod.entity.*;
 import net.hydra.jojomod.entity.badCompanyTroops.*;
+import net.hydra.jojomod.entity.mobs.*;
 import net.hydra.jojomod.entity.gold_experience.*;
-import net.hydra.jojomod.entity.mobs.AnubisGuardian;
-import net.hydra.jojomod.entity.mobs.FalconEntity;
-import net.hydra.jojomod.entity.mobs.StrayCatEntity;
-import net.hydra.jojomod.entity.mobs.TerrierEntity;
 import net.hydra.jojomod.entity.corpses.*;
 import net.hydra.jojomod.entity.npcs.Aesthetician;
 import net.hydra.jojomod.entity.npcs.ZombieAesthetician;
@@ -31,14 +28,12 @@ import net.hydra.jojomod.entity.zombie_minion.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.ambient.Bat;
-import net.minecraft.world.entity.animal.Bee;
-import net.minecraft.world.entity.animal.Fox;
-import net.minecraft.world.entity.animal.Salmon;
-import net.minecraft.world.entity.animal.Wolf;
+import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -58,6 +53,27 @@ public class FabricEntities {
                     new ResourceLocation(Roundabout.MOD_ID, "falcon"),
                     EntityType.Builder.of(FalconEntity::new, MobCategory.CREATURE).
                             sized(0.3f, 0.65f).clientTrackingRange(10).build(Roundabout.MOD_ID+":falcon")
+            );
+    public static final EntityType<Snake> SNAKE =
+            Registry.register(
+                    BuiltInRegistries.ENTITY_TYPE,
+                    new ResourceLocation(Roundabout.MOD_ID, "snake"),
+                    EntityType.Builder.of(Snake::new, MobCategory.CREATURE).
+                            sized(0.6f, 0.4f).clientTrackingRange(10).build(Roundabout.MOD_ID+":snake")
+            );
+    public static final EntityType<Piranha> PIRANHA =
+            Registry.register(
+                    BuiltInRegistries.ENTITY_TYPE,
+                    new ResourceLocation(Roundabout.MOD_ID, "piranha"),
+                    EntityType.Builder.of(Piranha::new, MobCategory.CREATURE).
+                            sized(0.6f, 0.5f).clientTrackingRange(10).build(Roundabout.MOD_ID+":piranha")
+            );
+    public static final EntityType<Butterfly> BUTTERFLY =
+            Registry.register(
+                    BuiltInRegistries.ENTITY_TYPE,
+                    new ResourceLocation(Roundabout.MOD_ID, "butterfly"),
+                    EntityType.Builder.of(Butterfly::new, MobCategory.AMBIENT).
+                            sized(0.5f, 0.5f).clientTrackingRange(10).build(Roundabout.MOD_ID+":butterfly")
             );
     public static final EntityType<Zombiefish> ZOMBIEFISH =
             Registry.register(
@@ -554,6 +570,34 @@ public class FabricEntities {
                         EntityType.Builder.of(KillerQueenEntity::new, MobCategory.MISC).
                                 sized(0.75f, 2.05f).clientTrackingRange(14).build(Roundabout.MOD_ID+":killer_queen")
                 );
+        public static final EntityType<JumpinJackFlashEntity> JUMPIN_JACK_FLASH =
+                Registry.register(
+                        BuiltInRegistries.ENTITY_TYPE,
+                        Roundabout.location("jumping_flash_jack"),
+                        EntityType.Builder.of(JumpinJackFlashEntity::new, MobCategory.MISC).
+                                sized(0.75f, 2.05f).clientTrackingRange(14).build(Roundabout.MOD_ID+":jumping_flash_jack")
+                );
+        public static final EntityType<JJFProjectileEntity> JJF_PROJECTILE =
+                Registry.register(
+                        BuiltInRegistries.ENTITY_TYPE,
+                        Roundabout.location("jjf_projectile"),
+                        EntityType.Builder.<JJFProjectileEntity>of(JJFProjectileEntity::new, MobCategory.MISC).
+                                sized(0.25F, 0.25F).clientTrackingRange(14).build(Roundabout.MOD_ID+":jjf_projectile")
+                );
+        public static final EntityType<JJFGunpowderCloudEntity> JJF_GUNPOWDER_CLOUD =
+                Registry.register(
+                        BuiltInRegistries.ENTITY_TYPE,
+                        Roundabout.location("jjf_gunpowder_cloud"),
+                        EntityType.Builder.<JJFGunpowderCloudEntity>of(JJFGunpowderCloudEntity::new, MobCategory.MISC).
+                                sized(3.5F, 2.0F).clientTrackingRange(14).build(Roundabout.MOD_ID+":jjf_gunpowder_cloud")
+                );
+        public static final EntityType<JJFSpitEntity> JJF_SPIT =
+                Registry.register(
+                        BuiltInRegistries.ENTITY_TYPE,
+                        Roundabout.location("jjf_spit"),
+                        EntityType.Builder.<JJFSpitEntity>of(JJFSpitEntity::new, MobCategory.MISC).
+                                sized(0.18F, 0.18F).clientTrackingRange(14).build(Roundabout.MOD_ID+":jjf_spit")
+                );
         public static final EntityType<BlockBombEntity> BLOCK_BOMB =
                 Registry.register(
                         BuiltInRegistries.ENTITY_TYPE,
@@ -859,6 +903,14 @@ public class FabricEntities {
                     .clientTrackingRange(5)
                     .build(Roundabout.MOD_ID + ":ge_fox")
     );
+    public static final EntityType<GESnakeEntity> GE_SNAKE = Registry.register(
+            BuiltInRegistries.ENTITY_TYPE,
+            new ResourceLocation(Roundabout.MOD_ID, "ge_snake"),
+            EntityType.Builder.of(GESnakeEntity::new, MobCategory.CREATURE)
+                    .sized(0.6f, 0.4f)
+                    .clientTrackingRange(5)
+                    .build(Roundabout.MOD_ID + ":ge_snake")
+    );
         public static final EntityType<SilverChariotEntity> SILVER_CHARIOT =
                 Registry.register(
                         BuiltInRegistries.ENTITY_TYPE,
@@ -886,6 +938,13 @@ public class FabricEntities {
                     Roundabout.location("silver_chariot_rapier_platform"),
                     EntityType.Builder.<SilverChariotRapierPlatformEntity>of(SilverChariotRapierPlatformEntity::new, MobCategory.MISC).
                             sized(2.0f, 0.2f).clientTrackingRange(16).build(Roundabout.MOD_ID+":silver_chariot_rapier_platform")
+            );
+    public static final EntityType<SilverChariotMountEntity> SC_MOUNT =
+            Registry.register(
+                    BuiltInRegistries.ENTITY_TYPE,
+                    new ResourceLocation(Roundabout.MOD_ID, "sc_mount"),
+                    EntityType.Builder.<SilverChariotMountEntity>of(SilverChariotMountEntity::new, MobCategory.MISC).
+                            sized(0.6f, 2f).clientTrackingRange(10).build(Roundabout.MOD_ID+":sc_mount")
             );
         public static final EntityType<HarpoonEntity> THROWN_HARPOON =
                 Registry.register(
@@ -1428,6 +1487,9 @@ public class FabricEntities {
                 ModEntities.THE_WORLD_ULTIMATE = THE_WORLD_ULTIMATE;
                 ModEntities.TERRIER_DOG = TERRIER_DOG;
                 ModEntities.FALCON = FALCON;
+                ModEntities.SNAKE = SNAKE;
+                ModEntities.PIRANHA = PIRANHA;
+                ModEntities.BUTTERFLY = BUTTERFLY;
                 ModEntities.ZOMBIEFISH = ZOMBIEFISH;
                 ModEntities.ANUBIS_GUARDIAN = ANUBIS_GUARDIAN;
                 ModEntities.STAR_PLATINUM = STAR_PLATINUM;
@@ -1450,7 +1512,11 @@ public class FabricEntities {
                 ModEntities.SOFT_AND_WET_KING = SOFT_AND_WET_KING;
                 ModEntities.SOFT_AND_WET_KILLER_QUEEN = SOFT_AND_WET_KILLER_QUEEN;
                 ModEntities.KILLER_QUEEN = KILLER_QUEEN;
-                ModEntities.setBlockBomb(BLOCK_BOMB);
+                ModEntities.JUMPIN_JACK_FLASH = JUMPIN_JACK_FLASH;
+                ModEntities.JJF_PROJECTILE = JJF_PROJECTILE;
+                ModEntities.JJF_GUNPOWDER_CLOUD = JJF_GUNPOWDER_CLOUD;
+                ModEntities.JJF_SPIT = JJF_SPIT;
+                ModEntities.BLOCK_BOMB = BLOCK_BOMB;
                 ModEntities.CINDERELLA = CINDERELLA;
                 ModEntities.CALIFORNIA_KING_BED = CALIFORNIA_KING_BED;
                 ModEntities.PLANET_WAVES = PLANET_WAVES;
@@ -1490,6 +1556,7 @@ public class FabricEntities {
         ModEntities.GE_BEE = GE_BEE;
         ModEntities.GE_FISH = GE_FISH;
         ModEntities.GE_FOX = GE_FOX;
+        ModEntities.GE_SNAKE = GE_SNAKE;
                 ModEntities.SILVER_CHARIOT = SILVER_CHARIOT;
                 ModEntities.SILVER_CHARIOT_PHARAOH =  SILVER_CHARIOT_PHARAOH;
                 ModEntities.THROWN_HARPOON = THROWN_HARPOON;
@@ -1557,6 +1624,7 @@ public class FabricEntities {
                 ModEntities.TUSK_HOLE = TUSK_HOLE;
                 ModEntities.SILVER_CHARIOT_RAPIER = SILVER_CHARIOT_RAPIER;
                 ModEntities.SILVER_CHARIOT_RAPIER_PLATFORM = SILVER_CHARIOT_RAPIER_PLATFORM;
+                ModEntities.SC_MOUNT = SC_MOUNT;
                 ModEntities.VIRUS_SPIT = VIRUS_SPIT;
 
                 ModEntities.BAD_COMPANY_SOLDIER = BAD_COMPANY_SOLDIER;
@@ -1620,6 +1688,9 @@ public class FabricEntities {
                 /*Attributes*/
                 FabricDefaultAttributeRegistry.register(TERRIER_DOG, Wolf.createAttributes());
         FabricDefaultAttributeRegistry.register(FALCON, FalconEntity.createAttributes());
+        FabricDefaultAttributeRegistry.register(SNAKE, Snake.createAttributes());
+        FabricDefaultAttributeRegistry.register(PIRANHA, Piranha.createAttributes());
+        FabricDefaultAttributeRegistry.register(BUTTERFLY, Butterfly.createAttributes());
                 FabricDefaultAttributeRegistry.register(STRAY_CAT, StrayCatEntity.createAttributes());
                 FabricDefaultAttributeRegistry.register(ZOMBIEFISH, Zombiefish.createAttributes());
                 FabricDefaultAttributeRegistry.register(ANUBIS_GUARDIAN, AnubisGuardian.createAttributes());
@@ -1671,6 +1742,7 @@ public class FabricEntities {
         FabricDefaultAttributeRegistry.register(GE_BEE, Bee.createAttributes());
         FabricDefaultAttributeRegistry.register(GE_FISH, Salmon.createAttributes());
         FabricDefaultAttributeRegistry.register(GE_FOX, Fox.createAttributes());
+        FabricDefaultAttributeRegistry.register(GE_SNAKE, Snake.createAttributes());
 
                 FabricDefaultAttributeRegistry.register(ROAD_ROLLER_ENTITY, RoadRollerEntity.createAttributes().build());
 
@@ -1698,6 +1770,9 @@ public class FabricEntities {
                 FabricDefaultAttributeRegistry.register(SOFT_AND_WET_KING, StandEntity.createStandAttributes());
                 FabricDefaultAttributeRegistry.register(SOFT_AND_WET_KILLER_QUEEN, StandEntity.createStandAttributes());
                 FabricDefaultAttributeRegistry.register(KILLER_QUEEN, StandEntity.createStandAttributes());
+                FabricDefaultAttributeRegistry.register(JUMPIN_JACK_FLASH, StandEntity.createStandAttributes());
+                //FabricDefaultAttributeRegistry.register(JJF_GUNPOWDER_CLOUD, JJFGunpowderCloudEntity);
+                //FabricDefaultAttributeRegistry.register(JJF_PROJECTILE, JJFProjectileEntity.create);
                 FabricDefaultAttributeRegistry.register(BLOCK_BOMB, StandEntity.createStandAttributes());
                 FabricDefaultAttributeRegistry.register(JUSTICE, StandEntity.createStandAttributes());
                 FabricDefaultAttributeRegistry.register(JUSTICE_PIRATE, StandEntity.createStandAttributes());
@@ -1754,16 +1829,51 @@ public class FabricEntities {
 
         FabricDefaultAttributeRegistry.register(CTR_BARRIER, CTRbarrierEntity.createStandAttributes());
 
-                FabricDefaultAttributeRegistry.register(SHEER_HEART_ATTACK, SheerHeartAttackEntity.createStandAttributes());
+        FabricDefaultAttributeRegistry.register(SHEER_HEART_ATTACK, SheerHeartAttackEntity.createStandAttributes());
 
-                /*Spawn Weights and Biomes*/
-                BiomeModifications.addSpawn(BiomeSelectors.includeByKey(Biomes.DESERT), MobCategory.CREATURE,
-                        ModEntities.TERRIER_DOG, 2, 1, 1);
-                 BiomeModifications.addSpawn(BiomeSelectors.includeByKey(Biomes.TAIGA), MobCategory.CREATURE,
-                         ModEntities.TERRIER_DOG, 1, 1, 3);
+        /*Spawn Weights and Biomes*/
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(Biomes.DESERT), MobCategory.CREATURE,
+                ModEntities.TERRIER_DOG, 2, 1, 1);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(Biomes.TAIGA), MobCategory.CREATURE,
+                ModEntities.TERRIER_DOG, 1, 1, 3);
 
-                /*Spawn Placement rules*/
-                 SpawnPlacements.register(ModEntities.TERRIER_DOG, SpawnPlacements.Type.ON_GROUND,
-                         Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, TerrierEntity::canSpawn);
+        BiomeModifications.addSpawn(
+                BiomeSelectors.includeByKey(Biomes.DESERT)
+                        .or(BiomeSelectors.tag(BiomeTags.IS_BADLANDS))
+                        .or(BiomeSelectors.tag(BiomeTags.IS_SAVANNA)),
+                MobCategory.CREATURE,
+                ModEntities.SNAKE, 8, 1, 2
+        );
+        BiomeModifications.addSpawn(
+                BiomeSelectors.tag(BiomeTags.IS_JUNGLE),
+                MobCategory.CREATURE,
+                ModEntities.SNAKE, 10, 1, 3
+        );
+        BiomeModifications.addSpawn(
+                BiomeSelectors.includeByKey(
+                        Biomes.SNOWY_PLAINS, Biomes.ICE_SPIKES, Biomes.SNOWY_TAIGA,
+                        Biomes.SNOWY_BEACH, Biomes.SNOWY_SLOPES, Biomes.JAGGED_PEAKS,
+                        Biomes.FROZEN_PEAKS, Biomes.GROVE, Biomes.FROZEN_OCEAN,
+                        Biomes.DEEP_FROZEN_OCEAN, Biomes.FROZEN_RIVER
+                ),
+                MobCategory.CREATURE,
+                ModEntities.SNAKE, 7, 1, 2
+        );
+        BiomeModifications.addSpawn(
+                BiomeSelectors.tag(BiomeTags.IS_FOREST)
+                        .or(BiomeSelectors.tag(BiomeTags.IS_TAIGA))
+                        .or(BiomeSelectors.includeByKey(
+                                Biomes.PLAINS, Biomes.SUNFLOWER_PLAINS,
+                                Biomes.SWAMP, Biomes.MANGROVE_SWAMP, Biomes.MEADOW
+                        )),
+                MobCategory.CREATURE,
+                ModEntities.SNAKE, 6, 1, 2
+        );
+
+        /*Spawn Placement rules*/
+        SpawnPlacements.register(ModEntities.TERRIER_DOG, SpawnPlacements.Type.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, TerrierEntity::canSpawn);
+        SpawnPlacements.register(ModEntities.SNAKE, SpawnPlacements.Type.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Snake::checkMobSpawnRules);
         }
 }

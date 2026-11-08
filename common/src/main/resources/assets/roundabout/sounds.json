@@ -1522,7 +1522,7 @@
     ]
   },
   "century_boy_hit_2": {
-    "subtitle": "sounds.roundabout.century_boy_hit_2",
+    "subtitle": "sounds.roundabout.century_boy_hit",
     "sounds": [
       "roundabout:century_boy_hit_2"
     ]
@@ -3128,6 +3128,31 @@
       "roundabout:terrier_pass"
     ]
   },
+  "snake_idle": {
+    "subtitle": "sounds.roundabout.snake_idle",
+    "sounds": [
+      "roundabout:snake_idle"
+    ]
+  },
+  "snake_attack": {
+    "subtitle": "sounds.roundabout.snake_attack",
+    "sounds": [
+      "roundabout:snake_attack"
+    ]
+  },
+  "snake_hurt": {
+    "subtitle": "sounds.roundabout.snake_hurt",
+    "sounds": [
+      "roundabout:snake_hurt"
+    ]
+  },
+  "snake_die": {
+    "subtitle": "sounds.roundabout.snake_die",
+    "sounds": [
+      "roundabout:snake_die"
+    ]
+  },
+
   "summon_world": {
     "subtitle": "sounds.roundabout.summon_world",
     "sounds": [
@@ -3270,6 +3295,48 @@
     "subtitle": "sounds.roundabout.can_bounce_end",
     "sounds": [
       "roundabout:can_bounce_end"
+    ]
+  },
+  "4c_menu_block_end": {
+    "subtitle": "sounds.roundabout.4c_menu_block_end",
+    "sounds": [
+      "roundabout:4c_menu_block_end"
+    ]
+  },
+  "4c_menu_block_start": {
+    "subtitle": "sounds.roundabout.4c_menu_block_start",
+    "sounds": [
+      "roundabout:4c_menu_block_start"
+    ]
+  },
+  "4c_menu_clone_select": {
+    "subtitle": "sounds.roundabout.4c_menu_clone_select",
+    "sounds": [
+      "roundabout:4c_menu_clone_select"
+    ]
+  },
+  "4c_menu_clone_deselect": {
+    "subtitle": "sounds.roundabout.4c_menu_clone_deselect",
+    "sounds": [
+      "roundabout:4c_menu_clone_deselect"
+    ]
+  },
+  "4c_menu_mass_select": {
+    "subtitle": "sounds.roundabout.4c_menu_mass_select",
+    "sounds": [
+      "roundabout:4c_menu_mass_select"
+    ]
+  },
+  "4c_menu_clone_task": {
+    "subtitle": "sounds.roundabout.4c_menu_clone_task",
+    "sounds": [
+      "roundabout:4c_menu_clone_task"
+    ]
+  },
+  "4c_menu_toggle_on": {
+    "subtitle": "sounds.roundabout.4c_menu_toggle_on",
+    "sounds": [
+      "roundabout:4c_menu_toggle_on"
     ]
   },
   "timestop_impact": {
@@ -4662,6 +4729,48 @@
       "roundabout:pucci_response_anasui_2"
     ]
   },
+  "pol_summon_1": {
+    "subtitle": "sounds.roundabout.polnareff_summon",
+    "sounds": [
+      "roundabout:pol_summon_1"
+    ]
+  },
+  "pol_summon_2": {
+    "subtitle": "sounds.roundabout.polnareff_summon",
+    "sounds": [
+      "roundabout:pol_summon_2"
+    ]
+  },
+  "pol_hurt_1": {
+    "subtitle": "sounds.roundabout.polnareff_hurt",
+    "sounds": [
+      "roundabout:pol_hurt_1"
+    ]
+  },
+  "pol_hurt_2": {
+    "subtitle": "sounds.roundabout.polnareff_hurt",
+    "sounds": [
+      "roundabout:pol_hurt_2"
+    ]
+  },
+  "pol_idle_1": {
+    "subtitle": "sounds.roundabout.polnareff_idle",
+    "sounds": [
+      "roundabout:pol_idle"
+    ]
+  },
+  "pol_die_1": {
+    "subtitle": "sounds.roundabout.polnareff_die",
+    "sounds": [
+      "roundabout:pol_die"
+    ]
+  },
+  "pol_armor_off": {
+    "subtitle": "sounds.roundabout.polnareff_armor_off",
+    "sounds": [
+      "roundabout:pol_armor_off"
+    ]
+  },
   "silver_chariot_summon": {
     "subtitle": "sounds.roundabout.silver_chariot_summon",
     "sounds": [
@@ -4906,6 +5015,38 @@
     "subtitle": "sounds.roundabout.ctr_stabilizing_rain",
     "sounds": [
       "roundabout:ctr_stabilizing_rain"
+    ]
+  },
+  "jumpin_jack_flash_summon": {
+    "sounds": [
+      "roundabout:jumpin_jack_flash_summon"
+    ]
+  },
+
+  "suction_launch": {
+    "sounds": [
+      "roundabout:suction_launch"
+    ]
+  },
+
+  "launcher_shoot": {
+    "sounds": [
+      "roundabout:shoot_1",
+      "roundabout:shoot_2",
+      "roundabout:shoot_3",
+      "roundabout:shoot_4"
+    ]
+  },
+
+  "launcher_burst": {
+    "sounds": [
+      "roundabout:shoot_burst"
+    ]
+  },
+  "zombiehorse_stitching": {
+    "subtitle": "sounds.roundabout.zombiehorse_stitching",
+    "sounds": [
+      "roundabout:zombiehorse_stitching"
     ]
   }
 }
